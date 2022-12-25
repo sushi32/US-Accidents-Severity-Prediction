@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dc.js Experiment</title>
+
+    <script src='../static/js/d3.v3.js' type='text/javascript'></script>
+    <script src='../static/js/crossfilter.js' type='text/javascript'></script>
+    <script src='../static/js/dc.js' type='text/javascript'></script>
+    <script src='../static/jquery-1.9.1.min.js' type='text/javascript'></script>
+    <script src='../static/bootstrap.min.js' type='text/javascript'></script>
+
+    <link href='../static/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='../static/dc.css' rel='stylesheet' type='text/css'>
+
+</head>
+<body style="background: powderblue linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));">
+<div>
+    <div>
+        <h2>US Accidents Data Visualizations
+            <a style="font-size: small" href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+            <a style="font-size: small" href="/">Home</a>
+        </h2>
+    </div>
+    <div>
+        <table class="columns">
+            <tr class="row">
+                <td>
+                    <div class="span" id="chart1">
+                        <h4> Number of Accidents per hour.
+                            <span>
+                        <a class="reset" href="javascript:chart1.filterAll();dc.redrawAll();"
+                           style="display: none;"> reset
+                        </a>
+                    </span>
+                        </h4>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="span" id="chart4">
+                        <h4> Accidents per Day of the Week
+                            <span>
+                        <a class="reset" href="javascript:chart4.filterAll();dc.redrawAll();"
+                           style="display: none;"> reset
+                        </a>
+                    </span>
+                        </h4>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="row">
+                <td>
+                    <div class="span" id="chart3">
+                        <h4> Accidents Percent for each severity.
+                            <span>
+                        <a class="reset" href="javascript:chart3.filterAll();dc.redrawAll();"
+                           style="display: none;"> reset
+                        </a>
+                    </span>
+                        </h4>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="span" id="chart2">
+                        <h4> Left or Right Side of Road
+                            <span>
+                        <a class="reset" href="javascript:chart2.filterAll();dc.redrawAll();"
+                           style="display: none;"> reset
+                        </a>
+                    </span>
+                        </h4>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="row">
+                <td>
+                    <div class="span" id="chart5">
+                        <h4> Accidents per each State
+                            <span>
+                        <a class="reset" href="javascript:chart5.filterAll();dc.redrawAll();"
+                           style="display: none;"> reset
+                        </a>
+                    </span>
+                        </h4>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="span" id="chart6">
+                        <h4> Weather Condition
+                            <span>
+                        <a class="reset" href="javascript:chart6.filterAll();dc.redrawAll();"
+                           style="display: none;"> reset
+                        </a>
+                    </span>
+                        </h4>
+                    </div>
+
+                    <div class="span" id="chart7">
+                        <h4> Wind directions
+                            <span>
+                        <a class="reset" href="javascript:chart7.filterAll();dc.redrawAll();"
+                           style="display: none;"> reset
+                        </a>
+                    </span>
+                        </h4>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="row">
+                <div class="span">
+                    <table class='table table-hover' id='chart8'>
+                        <thead>
+                        <tr class='header'>
+                            <th>Time Stamp</th>
+                            <th>Temperature (F)</th>
+                            <th>Wind Chill (F)</th>
+                            <th>Humidity (%)</th>
+                            <th>Pressure (in)</th>
+                            <th>Visibility (mi)</th>
+                            <th>Wind Speed (mph)</th>
+                            <th>Distance (mi)</th>
+                            <th>Crossing</th>
+                            <th>Junction</th>
+                            <th>Traffic Signal</th>
+                            <th>Sunrise/Sunset</th>
+                            <th>Google Map</th>
+                            <th>Open Street Map</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+<script src='../static/js/visualization_script.js' type='text/javascript'></script>
+</html>

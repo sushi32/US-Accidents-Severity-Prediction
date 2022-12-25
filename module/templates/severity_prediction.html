@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/severity_pred_style.css">
+    <title>Customer</title>
+</head>
+<body>
+<div id="container" class="d-flex flex-column justify-content-center w-100 h-100">
+    <h4 style="margin-top: 50px">Predicted Severity of the accident is: {{ predicted }}</h4>
+    <h4 style="margin-top: 30px">We are {{ percent }}% sure that our accident is of <b>{{ severity }}</b> severity.</h4>
+    <div class="field is-grouped">
+        <p class="control">
+            <a href="/" class="button is-info">
+                Home
+            </a>
+        </p>
+        <p class="control">
+            <a href="/models" class="button is-danger">
+                New Prediction
+            </a>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

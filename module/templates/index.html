@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>US Accidents</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/index_style.css"/>
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top py-4">
+        <p class="navbar-brand" style="margin-left: 80px; margin-top: 20px; color: black; font-size: 30px">
+            <b>&nbsp;&nbsp;US Accidents Severity</b></p>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#"
+                   style="color: black; font-weight: bold; background-color: #25A94BFF;">
+                    Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/models"
+                   style="color: black; font-weight: bold">Predict</a>
+                <a class="nav-item nav-link" href="/visualization"
+                   style="color: black; font-weight: bold">Visualizations</a>
+                <a class="nav-item nav-link" href="/charts"
+                   style="color: black; font-weight: bold">Plots</a>
+                <a class="nav-item nav-link" style="color: black; font-weight: bold"
+                   href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents">DataSet</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <h4>Dataset Attribute Information</h4>
+    <table>
+        <thead>
+        <tr>
+            <th style="text-align: center; border: 1px solid black">#</th>
+            <th style="text-align: center; border: 1px solid black">Attribute</th>
+            <th style="text-align: center; border: 1px solid black">Description</th>
+            <th style="text-align: center; border: 1px solid black">Null?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">1</td>
+            <td style="text-align: center; border: 1px solid black">ID</td>
+            <td style="text-align: center; border: 1px solid black">This is a unique identifier of the accident record.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <br>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">2</td>
+            <td style="text-align: center; border: 1px solid black">Severity</td>
+            <td style="text-align: center; border: 1px solid black">Shows the severity of the accident, a number between 1 and 4, where 1
+                indicates the least impact on
+                traffic (i.e., short delay as a result of the accident) and 4 indicates a significant impact on traffic
+                (i.e., long delay).<br>
+                Values 1 and 2 are categorized as <b>low</b> severity, where in 3 and 4 are cetegorized as <b>high</b> severity.
+            </td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">3</td>
+            <td style="text-align: center; border: 1px solid black">Start_Time</td>
+            <td style="text-align: center; border: 1px solid black">Shows start time of the accident in local time zone.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">4</td>
+            <td style="text-align: center; border: 1px solid black">End_Time</td>
+            <td style="text-align: center; border: 1px solid black">Shows end time of the accident in local time zone. End time here refers
+                to when the impact of accident
+                on traffic flow was dismissed.
+            </td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">5</td>
+            <td style="text-align: center; border: 1px solid black">Start_Lat</td>
+            <td style="text-align: center; border: 1px solid black">Shows latitude in GPS coordinate of the start point.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">6</td>
+            <td style="text-align: center; border: 1px solid black">Start_Lng</td>
+            <td style="text-align: center; border: 1px solid black">Shows longitude in GPS coordinate of the start point.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">7</td>
+            <td style="text-align: center; border: 1px solid black">End_Lat</td>
+            <td style="text-align: center; border: 1px solid black">Shows latitude in GPS coordinate of the end point.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">8</td>
+            <td style="text-align: center; border: 1px solid black">End_Lng</td>
+            <td style="text-align: center; border: 1px solid black">Shows longitude in GPS coordinate of the end point.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">9</td>
+            <td style="text-align: center; border: 1px solid black">Distance(mi)</td>
+            <td style="text-align: center; border: 1px solid black">The length of the road extent affected by the accident.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">10</td>
+            <td style="text-align: center; border: 1px solid black">Description</td>
+            <td style="text-align: center; border: 1px solid black">Shows natural language description of the accident.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">11</td>
+            <td style="text-align: center; border: 1px solid black">Number</td>
+            <td style="text-align: center; border: 1px solid black">Shows the street number in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">12</td>
+            <td style="text-align: center; border: 1px solid black">Street</td>
+            <td style="text-align: center; border: 1px solid black">Shows the street name in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">13</td>
+            <td style="text-align: center; border: 1px solid black">Side</td>
+            <td style="text-align: center; border: 1px solid black">Shows the relative side of the street (Right/Left) in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">14</td>
+            <td style="text-align: center; border: 1px solid black">City</td>
+            <td style="text-align: center; border: 1px solid black">Shows the city in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">15</td>
+            <td style="text-align: center; border: 1px solid black">County</td>
+            <td style="text-align: center; border: 1px solid black">Shows the county in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">16</td>
+            <td style="text-align: center; border: 1px solid black">State</td>
+            <td style="text-align: center; border: 1px solid black">Shows the state in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">17</td>
+            <td style="text-align: center; border: 1px solid black">Zipcode</td>
+            <td style="text-align: center; border: 1px solid black">Shows the zipcode in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">18</td>
+            <td style="text-align: center; border: 1px solid black">Country</td>
+            <td style="text-align: center; border: 1px solid black">Shows the country in address field.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">19</td>
+            <td style="text-align: center; border: 1px solid black">Timezone</td>
+            <td style="text-align: center; border: 1px solid black">Shows timezone based on the location of the accident (eastern, central, etc.).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">20</td>
+            <td style="text-align: center; border: 1px solid black">Airport_Code</td>
+            <td style="text-align: center; border: 1px solid black">Denotes an airport-based weather station which is the closest one to location of the accident.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">21</td>
+            <td style="text-align: center; border: 1px solid black">Weather_Timestamp</td>
+            <td style="text-align: center; border: 1px solid black">Shows the time-stamp of weather observation record (in local time).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">22</td>
+            <td style="text-align: center; border: 1px solid black">Temperature(F)</td>
+            <td style="text-align: center; border: 1px solid black">Shows the temperature (in Fahrenheit).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">23</td>
+            <td style="text-align: center; border: 1px solid black">Wind_Chill(F)</td>
+            <td style="text-align: center; border: 1px solid black">Shows the wind chill (in Fahrenheit).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">24</td>
+            <td style="text-align: center; border: 1px solid black">Humidity(%)</td>
+            <td style="text-align: center; border: 1px solid black">Shows the humidity (in percentage).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">25</td>
+            <td style="text-align: center; border: 1px solid black">Pressure(in)</td>
+            <td style="text-align: center; border: 1px solid black">Shows the air pressure (in inches).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">26</td>
+            <td style="text-align: center; border: 1px solid black">Visibility(mi)</td>
+            <td style="text-align: center; border: 1px solid black">Shows visibility (in miles).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">27</td>
+            <td style="text-align: center; border: 1px solid black">Wind_Direction</td>
+            <td style="text-align: center; border: 1px solid black">Shows wind direction.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">28</td>
+            <td style="text-align: center; border: 1px solid black">Wind_Speed(mph)</td>
+            <td style="text-align: center; border: 1px solid black">Shows wind speed (in miles per hour).</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">29</td>
+            <td style="text-align: center; border: 1px solid black">Precipitation(in)</td>
+            <td style="text-align: center; border: 1px solid black">Shows precipitation amount in inches, if there is any.</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">30</td>
+            <td style="text-align: center; border: 1px solid black">Weather_Condition</td>
+            <td style="text-align: center; border: 1px solid black">Shows the weather condition (rain, snow, thunderstorm, fog, etc.)</td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">31</td>
+            <td style="text-align: center; border: 1px solid black">Amenity</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of amenity in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">32</td>
+            <td style="text-align: center; border: 1px solid black">Bump</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of speed bump or hump in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">33</td>
+            <td style="text-align: center; border: 1px solid black">Crossing</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of crossing in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">34</td>
+            <td style="text-align: center; border: 1px solid black">Give_Way</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of give_way in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">35</td>
+            <td style="text-align: center; border: 1px solid black">Junction</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of junction in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">36</td>
+            <td style="text-align: center; border: 1px solid black">No_Exit</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of no_exit in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">37</td>
+            <td style="text-align: center; border: 1px solid black">Railway</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of railway a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">38</td>
+            <td style="text-align: center; border: 1px solid black">Roundabout</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of roundabout in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">39</td>
+            <td style="text-align: center; border: 1px solid black">Station</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of station in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">40</td>
+            <td style="text-align: center; border: 1px solid black">Stop</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of stop in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">41</td>
+            <td style="text-align: center; border: 1px solid black">Traffic_Calming</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of traffic_calming in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">42</td>
+            <td style="text-align: center; border: 1px solid black">Traffic_Signal</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of traffic_signal in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">43</td>
+            <td style="text-align: center; border: 1px solid black">Turning_Loop</td>
+            <td style="text-align: center; border: 1px solid black">Annotation which indicates presence of turning_loop in a nearby location.</td>
+            <td style="text-align: center; border: 1px solid black">No</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">44</td>
+            <td style="text-align: center; border: 1px solid black">Sunrise_Sunset</td>
+            <td style="text-align: center; border: 1px solid black">Shows the period of day (i.e. day or night) based on
+                sunrise/sunset.
+            </td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">45</td>
+            <td style="text-align: center; border: 1px solid black">Civil_Twilight</td>
+            <td style="text-align: center; border: 1px solid black">Shows the period of day (i.e. day or night) based on
+                civil twilight.
+            </td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">46</td>
+            <td style="text-align: center; border: 1px solid black">Nautical_Twilight</td>
+            <td style="text-align: center; border: 1px solid black">Shows the period of day (i.e. day or night) based on
+                nautical twilight.
+            </td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black">47</td>
+            <td style="text-align: center; border: 1px solid black">Astronomical_Twilight</td>
+            <td style="text-align: center; border: 1px solid black">Shows the period of day (i.e. day or night) based on
+                astronomical twilight.
+            </td>
+            <td style="text-align: center; border: 1px solid black">Yes</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

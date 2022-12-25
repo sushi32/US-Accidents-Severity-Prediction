@@ -1,0 +1,56 @@
+#customerDiv {
+    margin: 30px !important;
+}
+
+#staffDiv {
+    margin: 30px !important;
+}
+
+.navbar {
+    background-color: powderblue !important;
+}
+
+.navbar-custom {
+    height: 500px;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(bgp.jpg) center no-repeat fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: visible;
+}
+
+.container {
+    background-color: rgba(22, 160, 133, 0.7);
+    border-radius: 20px;
+    margin: 200px auto auto;
+    width: 70%;
+    padding: 1em;
+}
+
+a {
+    display: block;
+    width: 150px;
+    position: relative;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #17a2b8;
+    border-radius: 20px;
+    text-decoration: none;
+    padding: 8px 0;
+}
+
+a:hover {
+    background-color: #024149FF;
+}
+
+h4{
+    font-family: 'Open Sans Condensed', sans-serif;
+    position: relative;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 30px;
+    color: #ddd;
+    text-shadow: 3px 3px 10px #000;
+  }

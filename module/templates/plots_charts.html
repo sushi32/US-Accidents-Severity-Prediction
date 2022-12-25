@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src={{ url_for("static", filename="js/sample.js") }}></script>
+
+        <script type="text/javascript">
+            let nan_json_data = {{ nan_json | tojson }};
+            let state_json_data = {{ states_json | tojson }};
+            console.log(state_json_data);
+
+            google.charts.load("current", {packages:["corechart", "bar", "geochart"],
+            'mapsApiKey': 'AIzaSyAPEdDPUt9q2_ktdqdwHpAHvRq0FAwCXxY'});
+            google.charts.setOnLoadCallback(function () {
+                drawNanCountChart();
+                drawNanPercentChart();
+                drawStateAccidentsChart();
+            });
+        </script>
+    </head>
+
+    <body>
+        <table class="columns">
+            <tr>
+                <td><div id="chart_div" style="width: 1000px; height: 500px; border: 1px solid #ccc"></div></td>
+            </tr>
+            <tr>
+                <td><div id="chart_div1" style="width: 1000px; height: 500px; border: 1px solid #ccc"></div></td>
+            </tr>
+            <tr>
+                <td><div id="chart_div2" style="width: 1000px; height: 500px; border: 1px solid #ccc"></div></td>
+            </tr>
+        </table>
+    </body>
+</html>

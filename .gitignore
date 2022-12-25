@@ -1,0 +1,7 @@
+/venv/
+/plots/
+/data/initial_data.pkl
+/data/processed_data.pkl
+/modeling/6_model_training.ipynb
+/modeling/final.ipynb
+/modeling/preProcess.ipynb
